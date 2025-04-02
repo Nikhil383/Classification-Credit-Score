@@ -15,7 +15,7 @@ This project focuses on building a classification model to predict credit scores
 - **`credit_score.csv`**: The dataset used for training and testing the model.
 - **`credit_score.ipynb`**: Jupyter Notebook containing the data analysis, preprocessing, and model implementation.
 - **`requirements.txt`**: Lists the Python dependencies required for the project.
-- **`env/`**: Virtual environment directory containing the Python environment and installed packages.
+
 
 ## Setup Instructions
 
