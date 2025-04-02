@@ -25,7 +25,7 @@ This project focuses on building a classification model to predict credit scores
    source env/Scripts/activate  # On Windows
    source env/bin/activate      # On macOS/Linux
 3. Install the required dependencies
-   '''sh
+   ```sh
    pip install -r requirements.txt
 
 ## Machine Learning Algorithms and Results
