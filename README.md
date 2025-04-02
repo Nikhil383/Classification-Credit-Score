@@ -1,4 +1,4 @@
-#Classification-Credit-Score
+# Classification-Credit-Score
 
 This project focuses on building a classification model to predict credit scores based on the provided dataset.
 
