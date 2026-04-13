@@ -1,10 +1,8 @@
 # Classification-Credit-Score
 
-End-to-end data science project for **credit score classification** using the `credit_score.csv` dataset.
+End-to-end data science project for **credit score classification** using the `credit_score.csv` dataset, now with a **Streamlit web app** for model training and predictions.
 
-## What is now included
-
-This repository now includes a complete machine learning workflow:
+## What is included
 
 - Data loading and cleaning.
 - Feature preprocessing for numeric and categorical columns.
@@ -13,11 +11,13 @@ This repository now includes a complete machine learning workflow:
 - Persisted model artifact for reuse.
 - Batch prediction from CSV files.
 - CLI entry point for training and inference.
+- Streamlit UI for interactive train/predict workflows.
 
 ## Project structure
 
 ```text
 .
+├── app.py
 ├── credit_score.csv
 ├── credit_score.ipynb
 ├── README.md
@@ -45,7 +45,18 @@ pip install -r requirements.txt
 export PYTHONPATH=src
 ```
 
-## Train the model
+## Run Streamlit app
+
+```bash
+streamlit run app.py
+```
+
+In the app:
+1. Click **Train / Retrain model** from the sidebar.
+2. Upload a CSV file to score.
+3. Generate predictions and download results.
+
+## Train from CLI
 
 ```bash
 python -m credit_score_pipeline.cli train --pretty
@@ -56,7 +67,7 @@ Training outputs are saved to:
 - `artifacts/credit_score_model.joblib`
 - `artifacts/metrics.json`
 
-## Run batch prediction
+## Run batch prediction from CLI
 
 ```bash
 python -m credit_score_pipeline.cli predict --input new_customers.csv --output scored_customers.csv

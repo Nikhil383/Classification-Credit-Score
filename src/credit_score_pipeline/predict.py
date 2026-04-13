@@ -4,12 +4,14 @@ import joblib
 import pandas as pd
 
 from .config import ProjectConfig
+from .data import prepare_features_for_inference
 
 
 def predict_from_dataframe(df: pd.DataFrame, config: ProjectConfig | None = None):
     config = config or ProjectConfig()
     model = joblib.load(config.model_path)
-    return model.predict(df)
+    features = prepare_features_for_inference(df, config)
+    return model.predict(features)
 
 
 def predict_from_csv(input_csv: str, output_csv: str, config: ProjectConfig | None = None) -> None:
