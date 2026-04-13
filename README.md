@@ -1,41 +1,72 @@
 # Classification-Credit-Score
 
-This project focuses on building a classification model to predict credit scores based on the provided dataset.
+End-to-end data science project for **credit score classification** using the `credit_score.csv` dataset.
 
-## Project Structure
+## What is now included
 
-- `credit_score.csv`: The dataset used for training and testing the model.
-- `credit_score.ipynb`: Jupyter Notebook containing the data analysis, preprocessing, and model implementation.
-- `README.md`: Documentation file describing the project.
-- `requirements.txt`: Lists the Python dependencies required for the project.
+This repository now includes a complete machine learning workflow:
 
+- Data loading and cleaning.
+- Feature preprocessing for numeric and categorical columns.
+- Model training pipeline with `RandomForestClassifier`.
+- Evaluation and metrics export.
+- Persisted model artifact for reuse.
+- Batch prediction from CSV files.
+- CLI entry point for training and inference.
 
-## Files and Directories
+## Project structure
 
-- **`credit_score.csv`**: The dataset used for training and testing the model.
-- **`credit_score.ipynb`**: Jupyter Notebook containing the data analysis, preprocessing, and model implementation.
-- **`requirements.txt`**: Lists the Python dependencies required for the project.
+```text
+.
+├── credit_score.csv
+├── credit_score.ipynb
+├── README.md
+├── requirements.txt
+├── scripts/
+│   ├── train.py
+│   └── predict.py
+└── src/
+    └── credit_score_pipeline/
+        ├── __init__.py
+        ├── cli.py
+        ├── config.py
+        ├── data.py
+        ├── predict.py
+        ├── preprocess.py
+        └── train.py
+```
 
+## Setup
 
-## Setup Instructions
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+export PYTHONPATH=src
+```
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory and activate the virtual environment:
-   ```sh
-   source env/Scripts/activate  # On Windows
-   source env/bin/activate      # On macOS/Linux
-3. Install the required dependencies
-   ```sh
-   pip install -r requirements.txt
+## Train the model
 
-## Machine Learning Algorithms and Results
+```bash
+python -m credit_score_pipeline.cli train --pretty
+```
 
-| Algorithm               | Accuracy | Precision | Recall | F1-Score |
-|-------------------------|----------|-----------|--------|----------|
-| Logistic Regression     | 85.2%   | 84.5%     | 83.8%  | 84.1%    |
-| Random Forest           | 91.3%   | 90.8%     | 91.0%  | 90.9%    |
-| Support Vector Machine  | 88.7%   | 88.2%     | 87.9%  | 88.0%    |
-| Gradient Boosting       | 92.5%   | 92.0%     | 91.8%  | 91.9%    |
+Training outputs are saved to:
+
+- `artifacts/credit_score_model.joblib`
+- `artifacts/metrics.json`
+
+## Run batch prediction
+
+```bash
+python -m credit_score_pipeline.cli predict --input new_customers.csv --output scored_customers.csv
+```
+
+The output file will contain all input columns plus the predicted `Credit_Score`.
+
+## Notebook
+
+The notebook `credit_score.ipynb` remains available for interactive analysis.
 
 ## License
 
